@@ -1,11 +1,13 @@
 import * as React from "react"
-
+import { Toolbar } from "@mui/material";
 import Layout from "../components/layout/layout"
 
 import * as styles from "../components/index.module.scss"
 
 const IndexPage = () => (
-  <Layout></Layout>
+  <Layout>
+    <Toolbar/>
+  </Layout>
 )
 
 export default IndexPage
