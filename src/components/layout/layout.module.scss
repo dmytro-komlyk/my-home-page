@@ -1,5 +1,10 @@
 @import "../../styles/styles.scss";
 
+main {
+  height: 100vh;
+  background: #1E1E1E;
+}
+
 .wrapper {
   display: flex;
   flex-direction: column;
