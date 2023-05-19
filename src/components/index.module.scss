@@ -1,0 +1,129 @@
+@import "../styles/styles.scss";
+
+/* Intro */
+.intro {
+  width: 100%;
+  // height: 100vh;
+  color: var(--color-text);
+  margin: {
+    top: -65px;
+    bottom: 5rem;
+  };
+  padding: {
+    top: 5rem;
+    right: 1rem;
+    left: 1rem;
+    bottom: 2rem
+  }
+  background: var(--color-background);
+  box-shadow: none;
+
+  .text-stack {
+    @include for-tablet-portrait-up {
+      margin-top: 5rem;
+      padding-left: 2rem;
+    }
+
+    .contact-btn {
+      display: none;
+      width: 30%;
+      color: var(--color-white);
+      border: 2px solid var(--color-primary);
+
+      @include for-tablet-landscape-up {
+        display: flex;
+      }
+
+      &:hover {
+        background: var(--color-primary);
+      }
+    }
+  }
+
+  .image-stack {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    position: relative;
+
+    &-item-top {
+      grid-column: 10 / span 2;
+      grid-row: 1;
+      padding-top: 240%;
+      z-index: 3;
+    }
+
+    &-item-middle {
+      grid-column: 2 / span 11;
+      grid-row: 1;
+      z-index: 2;
+    }
+
+    &-item-bottom {
+      grid-column: 2 / span 4;
+      grid-row: 1;
+      z-index: 1;
+      padding-top: 35%;
+    }
+
+    .img {
+        // width: 100%;
+        // display: flex;
+    }
+  }
+  
+  .status-working {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+    width: 90%;
+    margin: 0 auto;
+    padding: 0.5rem;
+    border: 1px solid var(--color-text);
+
+    @include for-tablet-portrait-up {
+      width: 80%
+    }
+
+
+    // @include 
+    .title span {
+      color: white;
+    }
+
+    svg {
+      color: var(--color-primary)
+    }
+  }
+
+  .quote {
+    margin-top: 1.5rem;
+    align-items: end;
+
+    > * {
+      width: fit-content;
+
+      .text {
+        color: var(--color-white);
+        padding: {
+          right: 0.5rem;
+          bottom: 0.5rem;
+          left: 0.5rem;
+        }
+      }
+    }
+  }
+
+  .square-effects {
+    display: none;
+
+    @include for-desktop-up {
+      display: block;
+      position: absolute;
+      width: 91px;
+      height: 91px;
+      border: 1px solid var(--color-text);
+      bottom: 3rem;
+      right: -10rem;
+    }
+  }
+}
