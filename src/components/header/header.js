@@ -91,6 +91,13 @@ const Header = (props) => {
         </Box>
         <Container>
           <Toolbar className={styles.wrapper}>
+            <Typography
+              className={styles.logo}
+              variant="h6"
+              component="div"
+            >
+              DKOMLYK
+            </Typography>
             <IconButton
               className={styles.drawerBtn}
               color="inherit"
@@ -100,14 +107,6 @@ const Header = (props) => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography
-              className={styles.logo}
-              variant="h6"
-              component="div"
-            
-            >
-              DKOMLYK
-            </Typography>
             <Box className={styles.menu}>
               {navItems.map((item) => (
                 <Button
