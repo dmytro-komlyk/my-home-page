@@ -352,3 +352,56 @@
     }
   }
 }
+
+/* Contacts */
+
+.contacts {
+  color: var(--color-text);
+  background: var(--color-background);
+  box-shadow: none;
+  margin: 5rem 0;
+
+  .title {
+    align-items: center;
+
+    color: var(--color-white);
+
+    svg {
+      color: var(--color-primary);
+    }
+  }
+
+  .divider {
+    flex-basis: 20%;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+
+  &-stack {
+    width: fit-content;
+    gap: 1rem;
+    margin: 0 auto;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid var(--color-text);
+
+    &-title {
+      text-align: center;
+      color: var(--color-white);
+    }
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+
+      a {
+        color: var(--color-text);
+
+        &:hover {
+          color: var(--color-primary);
+        }
+      }
+    }
+  }
+}

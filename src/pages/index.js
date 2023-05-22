@@ -5,6 +5,9 @@ import SquareIcon from '@mui/icons-material/Square';
 import TagIcon from '@mui/icons-material/Tag';
 import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
+import TelegramIcon from '@mui/icons-material/Telegram';
+import EmailIcon from '@mui/icons-material/Email';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import {
   Toolbar,
   Box,
@@ -13,7 +16,8 @@ import {
   Grid,
   Stack,
   Button,
-  Typography
+  Typography,
+  Link as LinkMui
 } from "@mui/material";
 import Layout from "../components/layout/layout"
 import CardProject from "../components/card-project/card-project"
@@ -244,6 +248,41 @@ const IndexPage = () => (
               </Box>
               <Box className={styles.imageStackDivider}></Box>
             </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    </Paper>
+    <Paper id="contacts" className={styles.contacts} component="section">
+      <Container>
+        <Grid container rowGap={4} justifyContent="center">
+          <Grid item xs={12}>
+            <Stack className={styles.title} direction="row" spacing={1}>
+              <TagIcon fontSize="large"/>
+              <Typography variant="h4" component="h2">contacts</Typography>
+              <Box className={styles.divider}></Box>
+            </Stack>
+          </Grid>
+          <Grid item xs={11} sm={6} md={6}>
+            <Typography variant="body1" component="div">
+              I’m interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me
+            </Typography>
+          </Grid>
+          <Grid item xs={11} sm={6} md={6}>
+            <Stack className={styles.contactsStack}>
+              <Typography className={styles.contactsStackTitle} variant="h6" component="h4">Message me here</Typography>
+              <Box className={styles.contactsStackItem}>
+                <EmailIcon/>
+                <LinkMui href="#" underline="hover">example@gmail.com</LinkMui>
+              </Box>
+              <Box className={styles.contactsStackItem}>
+                <TelegramIcon/>
+                <LinkMui href="#" underline="hover">t.me/example</LinkMui>
+              </Box>
+              <Box className={styles.contactsStackItem}>
+                <LinkedInIcon/>
+                <LinkMui href="#" underline="hover">linkedin</LinkMui>
+              </Box>
+            </Stack>
           </Grid>
         </Grid>
       </Container>
