@@ -1,6 +1,9 @@
 import * as React from "react"
+import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
 import SquareIcon from '@mui/icons-material/Square';
+import TagIcon from '@mui/icons-material/Tag';
+import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
 import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
 import {
   Toolbar,
@@ -13,7 +16,7 @@ import {
   Typography
 } from "@mui/material";
 import Layout from "../components/layout/layout"
-
+import Card from "../components/card-project/card-project"
 import * as styles from "../components/index.module.scss"
 
 const IndexPage = () => (
@@ -76,6 +79,30 @@ const IndexPage = () => (
               </fieldset>
             </Stack>
             <Box className={styles.squareEffects}></Box>
+          </Grid>
+        </Grid>
+      </Container>
+    </Paper>
+    <Paper className={styles.projects} component="section">
+      <Container>
+        <Grid container rowGap={4} justifyContent="center">
+          <Grid item xs={12}>
+            <Stack className={styles.title} direction="row" spacing={1}>
+              <TagIcon fontSize="large"/>
+              <Typography variant="h4" component="h2">projects</Typography>
+              <Box className={styles.divider}></Box>
+              <Box className={styles.more}>
+                <Link to="" className={styles.link}>
+                  <Typography variant="body1" component="div">View All</Typography>
+                </Link>
+                <ArrowRightAltIcon fontSize="large"/>
+              </Box>
+            </Stack>
+          </Grid>
+          <Grid item container>
+            <Grid item>
+              <Card />
+            </Grid>
           </Grid>
         </Grid>
       </Container>
