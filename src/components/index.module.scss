@@ -274,3 +274,81 @@
     }
   }
 }
+
+/* About Me */
+.about-me {
+  color: var(--color-text);
+  background: var(--color-background);
+  box-shadow: none;
+  margin: 5rem 0;
+
+  .title {
+    align-items: center;
+
+    color: var(--color-white);
+
+    svg {
+      color: var(--color-primary);
+    }
+  }
+
+  .divider {
+    flex-basis: 45%;
+    height: 1px;
+    background-color: var(--color-primary);
+  }
+
+  .image-stack {
+    display: grid;
+    grid-template-columns: repeat(12, 1fr);
+    position: relative;
+
+    &-item-image {
+      grid-column: 2 / span 11 ;
+      grid-row: 1;
+      z-index: 1;
+    }
+
+    &-item-dots-1 {
+      grid-column: 2 / span 2 ;
+      grid-row: 1;
+      padding-top: 50%;
+      z-index: 2;
+    }
+
+    &-item-dots-2 {
+      grid-column: 7 / span 2 ;
+      grid-row: 1;
+      padding-top: 350%;
+      z-index: 2;
+    }
+
+    &-item-dots-3 {
+      grid-column: 11 / span 2 ;
+      grid-row: 1;
+      padding-top: 380%;
+      z-index: 2;
+    }
+
+    &-divider {
+      width: 70%;
+      height: 2px;
+      margin: 0 auto;
+      background-color: var(--color-primary);
+
+      @include for-tablet-landscape-up {
+        width: 60%;
+      }
+    }
+  }
+
+  &-info-btn {
+    width: fit-content;
+    color: var(--color-white);
+    border: 2px solid var(--color-primary);
+    
+    &:hover {
+      background-color: var(--color-primary);
+    }
+  }
+}
