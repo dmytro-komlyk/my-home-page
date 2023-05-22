@@ -16,7 +16,8 @@ import {
   Typography
 } from "@mui/material";
 import Layout from "../components/layout/layout"
-import Card from "../components/card-project/card-project"
+import CardProject from "../components/card-project/card-project"
+import CardSkill from "../components/card-skill/card-skill"
 import * as styles from "../components/index.module.scss"
 
 const IndexPage = () => (
@@ -101,7 +102,77 @@ const IndexPage = () => (
           </Grid>
           <Grid item container>
             <Grid item>
-              <Card />
+              <CardProject />
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    </Paper>
+    <Paper className={styles.skills} component="section">
+      <Container>
+        <Grid container rowGap={4} justifyContent="center">
+          <Grid item xs={12}>
+            <Stack className={styles.title} direction="row" spacing={1}>
+              <TagIcon fontSize="large"/>
+              <Typography variant="h4" component="h2">skills</Typography>
+              <Box className={styles.divider}></Box>
+            </Stack>
+          </Grid>
+          <Grid item md={5} margin="auto">
+            <Box className={styles.imageStack}>
+              <Box className={styles.imageStackItemTopLeft}>  
+                <StaticImage
+                  className={styles.img}
+                  src="../images/dots.png"
+                  alt="square"
+                  width={155}
+                  height={155}
+                />
+              </Box>
+              <Box className={styles.imageStackItemTopRight}>
+                <Box className={styles.square}></Box>
+              </Box>
+              <Box className={styles.imageStackItemBottomLeft}>  
+                <StaticImage
+                  className={styles.img}
+                  src="../images/square.png"
+                  alt="square"
+                  width={113}
+                  height={113}
+                />
+              </Box>
+              <Box className={styles.imageStackItemMiddle}>
+                <StaticImage
+                  className={styles.img}
+                  src="../images/dots.png"
+                  alt="photo"
+                  width={84}
+                  height={84}
+                />
+              </Box>
+              <Box className={styles.imageStackItemBottomRight}>
+                <Box className={styles.square}></Box>
+              </Box>
+            </Box>
+          </Grid>
+          <Grid className={styles.skillsStack} item container xs={11} md={7}>
+            <Grid className={styles.skillsStackFrontend} item>
+              <CardSkill data={{ title: "front-end", skills: []}}/>
+            </Grid>
+            <Grid className={styles.skillsStackBackend} item>
+              <CardSkill data={{ title: "back-end", skills: []}}/>
+            </Grid>
+            <Grid className={styles.skillsStackDatabases} item>
+              <CardSkill data={{ title: "databases", skills: []}}/>
+            </Grid>
+            <Grid className={styles.skillsStackFrameworks} item>
+              <CardSkill data={{ title: "frameworks", skills: []}}/>
+            </Grid>
+            <Grid className={styles.skillsStackTools} item>
+              <CardSkill data={{ title: "tools", skills: []}}/>
+            </Grid>
+            <Grid className={styles.skillsStackLanguage} item>
+              <CardSkill data={{ title: "language", skills: []}}/>
             </Grid>
           </Grid>
         </Grid>
