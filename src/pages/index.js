@@ -23,7 +23,7 @@ import * as styles from "../components/index.module.scss"
 const IndexPage = () => (
   <Layout>
     <Toolbar/>
-    <Paper className={styles.intro} component="section">
+    <Paper id="home" className={styles.intro} component="section">
       <Container>
         <Grid container rowGap={4} justifyContent="center">
           <Grid item xs={12} md={6}>
@@ -84,7 +84,7 @@ const IndexPage = () => (
         </Grid>
       </Container>
     </Paper>
-    <Paper className={styles.projects} component="section">
+    <Paper id="works" className={styles.projects} component="section">
       <Container>
         <Grid container rowGap={4} justifyContent="center">
           <Grid item xs={12}>
@@ -173,6 +173,76 @@ const IndexPage = () => (
             </Grid>
             <Grid className={styles.skillsStackLanguage} item>
               <CardSkill data={{ title: "language", skills: []}}/>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Container>
+    </Paper>
+    <Paper id="about-me" className={styles.aboutMe} component="section">
+      <Container>
+        <Grid container rowGap={4} justifyContent="center">
+          <Grid item xs={12}>
+            <Stack className={styles.title} direction="row" spacing={1}>
+              <TagIcon fontSize="large"/>
+              <Typography variant="h4" component="h2">about-me</Typography>
+              <Box className={styles.divider}></Box>
+            </Stack>
+          </Grid>
+          <Grid item container xs={12}>
+            <Grid item xs={11} sm={6} md={6}>
+              <Stack className={styles.aboutMeInfo} rowGap={4}>
+                <Typography variant="body1" component="div">
+                  Hi, I am Junior Developer with knowledge that allow to quickly adapt to any React application and start bringing value within short period of time.<br/>
+                  My main motivation to work as a developer - to be a part of the team that creates new apps for improving life quality, making our daily life much easier.<br/>
+                  Interested in continuing further development as a Full Stack Developer.<br/>
+                  Previous non-IT experience was related to lots of communication as well as handling routine manual work so these skills helped me in studying and gaining new knowledge and experience in software development and I believe are valuable for further work in a team and cooperation with a client.<br/>
+                  Highly proactive, flexible and a fast learner with strong analytical and problem solving skills.<br/>
+                </Typography>
+                <Button className={styles.aboutMeInfoBtn} endIcon={<ArrowRightAltIcon />}>
+                  Read more
+                </Button>
+              </Stack>
+            </Grid>
+            <Grid item xs={11} sm={5} md={5}>
+              <Box className={styles.imageStack}>
+                <Box className={styles.imageStackItemDots1}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/dots.png"
+                    alt="square"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemDots2}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/dots.png"
+                    alt="square"
+                    width={104}
+                    height={56}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemDots3}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/dots.png"
+                    alt="square"
+                    width={103}
+                    height={103}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemImage}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/image-2.png"
+                    alt="square"
+                    width={330}
+                    height={507}
+                  />
+                </Box>
+              </Box>
+              <Box className={styles.imageStackDivider}></Box>
             </Grid>
           </Grid>
         </Grid>
