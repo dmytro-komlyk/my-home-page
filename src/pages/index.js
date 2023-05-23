@@ -1,13 +1,13 @@
 import * as React from "react"
 import { Link } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
-import SquareIcon from '@mui/icons-material/Square';
-import TagIcon from '@mui/icons-material/Tag';
-import ArrowRightAltIcon from '@mui/icons-material/ArrowRightAlt';
-import FormatQuoteIcon from '@mui/icons-material/FormatQuote';
-import TelegramIcon from '@mui/icons-material/Telegram';
-import EmailIcon from '@mui/icons-material/Email';
-import LinkedInIcon from '@mui/icons-material/LinkedIn';
+import SquareIcon from "@mui/icons-material/Square";
+import TagIcon from "@mui/icons-material/Tag";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
   Toolbar,
   Box,
@@ -97,7 +97,7 @@ const IndexPage = () => (
               <Typography variant="h4" component="h2">projects</Typography>
               <Box className={styles.divider}></Box>
               <Box className={styles.more}>
-                <Link to="" className={styles.link}>
+                <Link to="/projects" className={styles.link}>
                   <Typography variant="body1" component="div">View All</Typography>
                 </Link>
                 <ArrowRightAltIcon fontSize="large"/>
