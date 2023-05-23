@@ -33,3 +33,8 @@ body {
   overflow-y: auto;
   overflow-x: hidden;
 }
+
+:global(#___gatsby),
+:global(#gatsby-focus-wrapper) {
+  height: 100%;
+}
