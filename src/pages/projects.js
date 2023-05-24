@@ -24,7 +24,7 @@ const ProjectsPage = () => (
       <Container>
         <Grid container>
           <Grid item xs={12}>
-            <Box className={styles.projects}>
+            <Box className={styles.projectsPageIntro}>
               <Typography className={styles.projectsPageTitle} variant="h4" component="h2"><span className={styles.projectsPageTitleIcon}>/</span> projects</Typography>
               <Typography className={styles.projectsPageDescription} variant="body1" component="p">List of my projects</Typography>
             </Box>

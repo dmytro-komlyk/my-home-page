@@ -24,8 +24,8 @@ import CardProject from "../components/card-project/card-project"
 import CardSkill from "../components/card-skill/card-skill"
 import * as styles from "../components/index.module.scss"
 
-const IndexPage = (props) => (
-  <Layout location={props.location}>
+const IndexPage = () => (
+  <Layout>
     <Toolbar/>
     <Paper className={styles.intro} component="section">
       <Container>
