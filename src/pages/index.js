@@ -24,10 +24,10 @@ import CardProject from "../components/card-project/card-project"
 import CardSkill from "../components/card-skill/card-skill"
 import * as styles from "../components/index.module.scss"
 
-const IndexPage = () => (
-  <Layout>
+const IndexPage = (props) => (
+  <Layout location={props.location}>
     <Toolbar/>
-    <Paper id="home" className={styles.intro} component="section">
+    <Paper className={styles.intro} component="section">
       <Container>
         <Grid container rowGap={4} justifyContent="center">
           <Grid item xs={12} md={6}>
@@ -88,7 +88,7 @@ const IndexPage = () => (
         </Grid>
       </Container>
     </Paper>
-    <Paper id="works" className={styles.projects} component="section">
+    <Paper className={styles.projects} component="section">
       <Container>
         <Grid container rowGap={4} justifyContent="center">
           <Grid item xs={12}>
@@ -182,7 +182,7 @@ const IndexPage = () => (
         </Grid>
       </Container>
     </Paper>
-    <Paper id="about-me" className={styles.aboutMe} component="section">
+    <Paper className={styles.aboutMe} component="section">
       <Container>
         <Grid container rowGap={4} justifyContent="center">
           <Grid item xs={12}>
@@ -202,7 +202,7 @@ const IndexPage = () => (
                   Previous non-IT experience was related to lots of communication as well as handling routine manual work so these skills helped me in studying and gaining new knowledge and experience in software development and I believe are valuable for further work in a team and cooperation with a client.<br/>
                   Highly proactive, flexible and a fast learner with strong analytical and problem solving skills.<br/>
                 </Typography>
-                <Button className={styles.aboutMeInfoBtn} endIcon={<ArrowRightAltIcon />}>
+                <Button className={styles.aboutMeInfoBtn} endIcon={<ArrowRightAltIcon />} component={Link} to="/about-me">
                   Read more
                 </Button>
               </Stack>
@@ -252,7 +252,7 @@ const IndexPage = () => (
         </Grid>
       </Container>
     </Paper>
-    <Paper id="contacts" className={styles.contacts} component="section">
+    <Paper className={styles.contacts} component="section">
       <Container>
         <Grid container rowGap={4} justifyContent="center">
           <Grid item xs={12}>

@@ -1,6 +1,5 @@
 import * as React from "react"
 import { Link } from "gatsby"
-import scrollTo from 'gatsby-plugin-smoothscroll';
 import {
   Box,
   Container,
@@ -12,7 +11,6 @@ import {
   Button,
   Link as MuiLink,
   List,
-  ListItem,
   ListItemButton,
   ListItemText,
   IconButton,
@@ -26,8 +24,11 @@ import TelegramIcon from '@mui/icons-material/Telegram';
 
 import * as styles from "./header.module.scss"
 
-const drawerWidth = 240;
-const navItems = ["home", "works", "about-me", "contacts"];
+const navItems = [
+  { path: "/", name: "home" },
+  { path: "/projects/", name: "projects" },
+  { path: "/about-me/", name: "about-me" }
+];
 const communicationItems = [
   { Icon: GitHubIcon, href: "https://github.com/dmytro-komlyk" },
   { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/dmytro-komlyk/" },
@@ -35,7 +36,6 @@ const communicationItems = [
 ]
 
 const Header = (props) => {
-  const { window, siteTitle } = props;
   const [mobileOpen, setMobileOpen] = React.useState(false);
 
   const handleDrawerToggle = () => {
@@ -47,19 +47,22 @@ const Header = (props) => {
       className={styles.drawer}
       onClick={handleDrawerToggle}
     >
-      <Typography className={styles.title} variant="h6" component="div">
-        DKOMLYK
-      </Typography>
+      <Link to="/">
+        <Typography className={styles.title} variant="h6">
+          DKOMLYK
+        </Typography>
+      </Link>
       <Divider color="grey" />
       <List className={styles.menu}>
-        {navItems.map((item) => (
+        {navItems.map(({ path, name }) => (
           <ListItemButton
-            key={item}
+            key={name}
             className={styles.menuItem}
-            href={`#${item}`}
+            to={path}
+            component={Link}
           >
             <TagIcon/>
-            <ListItemText primary={item} />
+            <ListItemText primary={name} />
           </ListItemButton>
         ))}
       </List>
@@ -73,8 +76,6 @@ const Header = (props) => {
       </Stack>
     </Box>
   );
-
-  const container = window !== undefined ? () => window().document.body : undefined;
 
   return (
     <Box className={styles.header} component="header">
@@ -94,7 +95,8 @@ const Header = (props) => {
             <Typography
               className={styles.logo}
               variant="h6"
-              component="div"
+              component={Link}
+              to="/"
             >
               DKOMLYK
             </Typography>
@@ -108,15 +110,16 @@ const Header = (props) => {
               <MenuIcon />
             </IconButton>
             <Box className={styles.menu}>
-              {navItems.map((item) => (
+              {navItems.map(({ path, name }) => (
                 <Button
                   className={styles.menuItem}
-                  key={item}
-                  onClick={() => scrollTo(`#${item}`)}
-                  >
+                  key={name}
+                  to={path}
+                  component={Link}
+                >
                   <TagIcon fontSize="small" />
                   <Typography variant="body1" component="span">
-                    {item}
+                    {name}
                   </Typography>
                 </Button>
               ))}
@@ -127,7 +130,6 @@ const Header = (props) => {
       <Box component="nav">
         <Drawer
           anchor={"top"}
-          container={container}
           variant="temporary"
           open={mobileOpen}
           onClose={handleDrawerToggle}
