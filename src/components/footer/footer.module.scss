@@ -1,0 +1,47 @@
+.footer {
+  position: relative;
+  z-index: 1;
+  background-color: var(--color-background);
+
+  &-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    color: var(--color-white);
+  }
+
+  &-media {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    &-title {
+      color: var(--color-white);
+    }
+
+    &-stack {
+      flex-direction: row;
+      gap: 0.5rem;
+
+      & svg:hover {
+        fill: var(--color-primary);
+      }
+    }
+  }
+
+  &-copyright {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.divider {
+  background-color: var(--color-text);
+}
+
+.container-content {
+  padding: 2rem 0;
+  gap: 3rem;
+}
