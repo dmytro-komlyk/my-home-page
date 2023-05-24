@@ -2,7 +2,8 @@
 
 .nav {
   box-shadow: none;
-  background: transparent;
+  background: var(--color-background);
+  box-shadow: 0 1px 5px var(--color-text);
 
   .wrapper {
     position: relative;
@@ -26,11 +27,12 @@
 
     &-divider {
       position: relative;
-      height: 15rem;
-      margin-left: 0.7rem;
+      height: 10rem;
+      margin: {
+        top: 4rem;
+        left: 0.7rem;
+      };
       border-left: 2px solid var(--color-text);
-
-      
     }
 
     &-icons {
@@ -54,7 +56,10 @@
     }
 
   }
-//   .logo {}
+  .logo {
+    color: var(--color-white);
+  }
+
   .menu {
     display: none;
     gap: 1rem;

@@ -1,5 +1,4 @@
 import * as React from "react"
-// import { useStaticQuery, graphql } from "gatsby"
 import {
   Box
 } from '@mui/material';
@@ -10,11 +9,13 @@ import Footer from "../footer/footer"
 
 import * as styles from "./layout.module.scss"
 
-const Layout = ({ children }) => {
+const Layout = (props) => {
+  const { children } = props;
+
   return (
     <StyledEngineProvider injectFirst>
       <Box className={styles.wrapper}>
-        <Header siteTitle='Title'/>
+        <Header siteTitle="Title" />
         <main className={styles.main}>{children}</main>
         <Footer />
       </Box>
