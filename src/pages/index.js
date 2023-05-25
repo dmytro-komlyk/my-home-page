@@ -1,6 +1,7 @@
 import * as React from "react"
 import { Link, graphql } from "gatsby"
 import { StaticImage } from "gatsby-plugin-image"
+import WavingHandIcon from '@mui/icons-material/WavingHand';
 import SquareIcon from "@mui/icons-material/Square";
 import TagIcon from "@mui/icons-material/Tag";
 import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
@@ -26,6 +27,8 @@ import * as styles from "../components/index.module.scss"
 
 const IndexPage = ({ data }) => {
   const { allContentfulProject, allContentfulSkill } = data;
+  const projects = allContentfulProject.edges;
+
   return (
     <Layout>
       <Toolbar/>
@@ -34,8 +37,8 @@ const IndexPage = ({ data }) => {
           <Grid container rowGap={4} justifyContent="center">
             <Grid item xs={12} md={6}>
               <Stack className={styles.textStack} spacing={4}>
-                <Typography variant="h4" component="h1">Elias is a web designer and front-end developer</Typography>
-                <Typography variant="body1" component="p">He crafts responsive websites where technologies meet creativity</Typography>
+                <Typography variant="h4" component="h1">Hello <WavingHandIcon fontSize="medium"/> , <br/>my name is <span>Dmytro</span></Typography>
+                <Typography className={styles.textStackPurpose} variant="body1" component="p">I build responsive websites where technologies meet creativity</Typography>
                 <Button className={styles.contactBtn}>Contact me</Button>
               </Stack>
             </Grid>
@@ -77,11 +80,11 @@ const IndexPage = ({ data }) => {
               <Stack className={styles.quote}>
                 <fieldset>
                   <legend align="left"><FormatQuoteIcon fontSize="large"/></legend>
-                  <Typography className={styles.text} variant="h5" componen="div">With great power comes great electricity bill</Typography>
+                  <Typography className={styles.text} variant="h5" componen="div">First learn computer science and all the theory. Next develop a programming style. Then forget all that and just hack.</Typography>
                 </fieldset>
                 <fieldset>
                   <legend align="right"><FormatQuoteIcon fontSize="large"/></legend>
-                  <Typography className={styles.text} variant="h6" component="div">- Dr. Who</Typography>
+                  <Typography className={styles.text} variant="h6" component="div">- George Carrette</Typography>
                 </fieldset>
               </Stack>
               <Box className={styles.squareEffects}></Box>
@@ -106,7 +109,7 @@ const IndexPage = ({ data }) => {
               </Stack>
             </Grid>
             <Grid item container columnGap={3}>
-              {allContentfulProject.edges.map(({ node }) => (
+              {projects && projects.map(({ node }) => (
                 <Grid key={node.id} item>
                   <CardProject data={node} />
                 </Grid>
@@ -179,9 +182,9 @@ const IndexPage = ({ data }) => {
                 />
               </Grid>
               <Grid className={styles.skillsStackFrameworks} item>
-                {/* <CardSkill
-                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "frameworks"))?.node}
-                /> */}
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "frameworks")).node}
+                />
               </Grid>
               <Grid className={styles.skillsStackTools} item>
                 <CardSkill
@@ -189,9 +192,9 @@ const IndexPage = ({ data }) => {
                 />
               </Grid>
               <Grid className={styles.skillsStackLanguage} item>
-                {/* <CardSkill
+                <CardSkill
                   data={allContentfulSkill.edges.find(({ node }) => (node.title === "language")).node}
-                /> */}
+                />
               </Grid>
             </Grid>
           </Grid>
@@ -207,14 +210,12 @@ const IndexPage = ({ data }) => {
                 <Box className={styles.divider}></Box>
               </Stack>
             </Grid>
-            <Grid item container xs={12}>
+            <Grid item container xs={12} alignItems="baseline">
               <Grid item xs={11} sm={6} md={6}>
                 <Stack className={styles.aboutMeInfo} rowGap={4}>
                   <Typography variant="body1" component="div">
-                    Hi, I am Junior Developer with knowledge that allow to quickly adapt to any React application and start bringing value within short period of time.<br/>
+                    Hi, I am Full-stack Developer with knowledge that allow to quickly adapt to any React application and start bringing value within short period of time.<br/>
                     My main motivation to work as a developer - to be a part of the team that creates new apps for improving life quality, making our daily life much easier.<br/>
-                    Interested in continuing further development as a Full Stack Developer.<br/>
-                    Previous non-IT experience was related to lots of communication as well as handling routine manual work so these skills helped me in studying and gaining new knowledge and experience in software development and I believe are valuable for further work in a team and cooperation with a client.<br/>
                     Highly proactive, flexible and a fast learner with strong analytical and problem solving skills.<br/>
                   </Typography>
                   <Button className={styles.aboutMeInfoBtn} endIcon={<ArrowRightAltIcon />} component={Link} to="/about-me">
@@ -279,7 +280,7 @@ const IndexPage = ({ data }) => {
             </Grid>
             <Grid item xs={11} sm={6} md={6}>
               <Typography variant="body1" component="div">
-                I’m interested in freelance opportunities. However, if you have other request or question, don’t hesitate to contact me
+                If you have other request or question, don’t hesitate to contact me
               </Typography>
             </Grid>
             <Grid item xs={11} sm={6} md={6}>
@@ -287,15 +288,15 @@ const IndexPage = ({ data }) => {
                 <Typography className={styles.contactsStackTitle} variant="h6" component="h4">Message me here</Typography>
                 <Box className={styles.contactsStackItem}>
                   <EmailIcon/>
-                  <LinkMui href="#" underline="hover">example@gmail.com</LinkMui>
+                  <LinkMui href="#" underline="hover">dima.komlyk@gmail.com</LinkMui>
                 </Box>
                 <Box className={styles.contactsStackItem}>
                   <TelegramIcon/>
-                  <LinkMui href="#" underline="hover">t.me/example</LinkMui>
+                  <LinkMui href="https://t.me/dmytro_komlyk" underline="hover">t.me/dmytro_komlyk</LinkMui>
                 </Box>
                 <Box className={styles.contactsStackItem}>
                   <LinkedInIcon/>
-                  <LinkMui href="#" underline="hover">linkedin</LinkMui>
+                  <LinkMui href="https://www.linkedin.com/in/dmytro-komlyk/" underline="hover">linkedin</LinkMui>
                 </Box>
               </Stack>
             </Grid>
@@ -320,6 +321,8 @@ export const query = graphql`
           isCommercial
           isProgress
           isSmall
+          demoLink
+          githubLink
           picture {
             title
             gatsbyImageData
