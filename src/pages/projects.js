@@ -19,6 +19,7 @@ import CardProject from "../components/card-project/card-project"
 import * as styles from "../components/projects.module.scss"
 
 const ProjectsPage = ({ data }) => {
+  const projects = data.allContentfulProject.edges;
 
   return (
     <Layout>
@@ -51,8 +52,8 @@ const ProjectsPage = ({ data }) => {
                 </Stack>
               </Grid>
               <Grid className={styles.completeAppsStack} item container gap={3}>
-                { data.allContentfulProject.edges.map(({ node }) => (
-                  <Grid item>
+                { projects && projects.map(({ node }) => (
+                  <Grid key={node.id} item>
                     <CardProject data={node} />
                   </Grid>
                 )) }
