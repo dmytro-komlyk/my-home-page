@@ -30,9 +30,11 @@
 
   &-actions {
     gap: 0.5rem;
+    text-align: center;
     background-color: var(--color-background);
+  
 
-    button {
+    &-btn {
       width: 50%;
       color: var(--color-text);
       border-radius: 0.2rem;

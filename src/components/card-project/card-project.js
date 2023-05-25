@@ -1,5 +1,5 @@
 import * as React from "react"
-import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
+import { GatsbyImage } from "gatsby-plugin-image"
 import {
   Stack,
   Card,
@@ -13,7 +13,14 @@ import {
 import * as styles from "./card-project.module.scss";
 
 const CardProject = ({ data }) => {
-  const { title, technologies, description, picture } = data;
+  const {
+    title,
+    technologies,
+    description,
+    picture,
+    githubLink,
+    demoLink
+  } = data;
   
   return (
     <Card className={styles.cardProject}>
@@ -36,8 +43,8 @@ const CardProject = ({ data }) => {
         </Typography>
       </CardContent>
       <CardActions className={styles.cardProjectActions}>
-        <Button size="small">GITHUB</Button>
-        <Button size="small">LIVE</Button>
+        <Button className={styles.cardProjectActionsBtn} as="a" href={githubLink} size="small">GITHUB</Button>
+        <Button className={styles.cardProjectActionsBtn} as="a" href={demoLink} size="small">LIVE</Button>
       </CardActions>
     </Card>
   );
