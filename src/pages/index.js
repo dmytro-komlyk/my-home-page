@@ -1,176 +1,345 @@
 import * as React from "react"
+import { Link, graphql } from "gatsby"
+import { StaticImage } from "gatsby-plugin-image"
+import WavingHandIcon from '@mui/icons-material/WavingHand';
+import SquareIcon from "@mui/icons-material/Square";
+import TagIcon from "@mui/icons-material/Tag";
+import ArrowRightAltIcon from "@mui/icons-material/ArrowRightAlt";
+import FormatQuoteIcon from "@mui/icons-material/FormatQuote";
+import TelegramIcon from "@mui/icons-material/Telegram";
+import EmailIcon from "@mui/icons-material/Email";
+import LinkedInIcon from "@mui/icons-material/LinkedIn";
+import {
+  Toolbar,
+  Box,
+  Paper,
+  Container,
+  Grid,
+  Stack,
+  Button,
+  Typography,
+  Link as LinkMui
+} from "@mui/material";
+import Layout from "../components/layout/layout"
+import CardProject from "../components/card-project/card-project"
+import CardSkill from "../components/card-skill/card-skill"
+import * as styles from "../components/index.module.scss"
 
-const pageStyles = {
-  color: "#232129",
-  padding: 96,
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
-const headingAccentStyles = {
-  color: "#663399",
-}
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
-const listStyles = {
-  marginBottom: 96,
-  paddingLeft: 0,
-}
-const listItemStyles = {
-  fontWeight: 300,
-  fontSize: 24,
-  maxWidth: 560,
-  marginBottom: 30,
-}
+const IndexPage = ({ data }) => {
+  const { allContentfulProject, allContentfulSkill } = data;
+  const projects = allContentfulProject.edges;
 
-const linkStyle = {
-  color: "#8954A8",
-  fontWeight: "bold",
-  fontSize: 16,
-  verticalAlign: "5%",
-}
-
-const docLinkStyle = {
-  ...linkStyle,
-  listStyleType: "none",
-  marginBottom: 24,
-}
-
-const descriptionStyle = {
-  color: "#232129",
-  fontSize: 14,
-  marginTop: 10,
-  marginBottom: 0,
-  lineHeight: 1.25,
-}
-
-const docLink = {
-  text: "Documentation",
-  url: "https://www.gatsbyjs.com/docs/",
-  color: "#8954A8",
-}
-
-const badgeStyle = {
-  color: "#fff",
-  backgroundColor: "#088413",
-  border: "1px solid #088413",
-  fontSize: 11,
-  fontWeight: "bold",
-  letterSpacing: 1,
-  borderRadius: 4,
-  padding: "4px 6px",
-  display: "inline-block",
-  position: "relative",
-  top: -2,
-  marginLeft: 10,
-  lineHeight: 1,
-}
-
-const links = [
-  {
-    text: "Tutorial",
-    url: "https://www.gatsbyjs.com/docs/tutorial/getting-started/",
-    description:
-      "A great place to get started if you're new to web development. Designed to guide you through setting up your first Gatsby site.",
-    color: "#E95800",
-  },
-  {
-    text: "How to Guides",
-    url: "https://www.gatsbyjs.com/docs/how-to/",
-    description:
-      "Practical step-by-step guides to help you achieve a specific goal. Most useful when you're trying to get something done.",
-    color: "#1099A8",
-  },
-  {
-    text: "Reference Guides",
-    url: "https://www.gatsbyjs.com/docs/reference/",
-    description:
-      "Nitty-gritty technical descriptions of how Gatsby works. Most useful when you need detailed information about Gatsby's APIs.",
-    color: "#BC027F",
-  },
-  {
-    text: "Conceptual Guides",
-    url: "https://www.gatsbyjs.com/docs/conceptual/",
-    description:
-      "Big-picture explanations of higher-level Gatsby concepts. Most useful for building understanding of a particular topic.",
-    color: "#0D96F2",
-  },
-  {
-    text: "Plugin Library",
-    url: "https://www.gatsbyjs.com/plugins",
-    description:
-      "Add functionality and customize your Gatsby site or app with thousands of plugins built by our amazing developer community.",
-    color: "#8EB814",
-  },
-  {
-    text: "Build and Host",
-    url: "https://www.gatsbyjs.com/cloud",
-    badge: true,
-    description:
-      "Now you’re ready to show the world! Give your Gatsby site superpowers: Build and host on Gatsby Cloud. Get started for free!",
-    color: "#663399",
-  },
-]
-
-const IndexPage = () => {
   return (
-    <main style={pageStyles}>
-      <h1 style={headingStyles}>
-        Congratulations
-        <br />
-        <span style={headingAccentStyles}>— you just made a Gatsby site! 🎉🎉🎉</span>
-      </h1>
-      <p style={paragraphStyles}>
-        Edit <code style={codeStyles}>src/pages/index.js</code> to see this page
-        update in real-time. 😎
-      </p>
-      <ul style={listStyles}>
-        <li style={docLinkStyle}>
-          <a
-            style={linkStyle}
-            href={`${docLink.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-          >
-            {docLink.text}
-          </a>
-        </li>
-        {links.map(link => (
-          <li key={link.url} style={{ ...listItemStyles, color: link.color }}>
-            <span>
-              <a
-                style={linkStyle}
-                href={`${link.url}?utm_source=starter&utm_medium=start-page&utm_campaign=minimal-starter`}
-              >
-                {link.text}
-              </a>
-              {link.badge && (
-                <span style={badgeStyle} aria-label="New Badge">
-                  NEW!
-                </span>
-              )}
-              <p style={descriptionStyle}>{link.description}</p>
-            </span>
-          </li>
-        ))}
-      </ul>
-      <img
-        alt="Gatsby G Logo"
-        src="data:image/svg+xml,%3Csvg width='24' height='24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M12 2a10 10 0 110 20 10 10 0 010-20zm0 2c-3.73 0-6.86 2.55-7.75 6L14 19.75c3.45-.89 6-4.02 6-7.75h-5.25v1.5h3.45a6.37 6.37 0 01-3.89 4.44L6.06 9.69C7 7.31 9.3 5.63 12 5.63c2.13 0 4 1.04 5.18 2.65l1.23-1.06A7.959 7.959 0 0012 4zm-8 8a8 8 0 008 8c.04 0 .09 0-8-8z' fill='%23639'/%3E%3C/svg%3E"
-      />
-    </main>
+    <Layout>
+      <Toolbar/>
+      <Paper className={styles.intro} component="section">
+        <Container>
+          <Grid container rowGap={4} justifyContent="center">
+            <Grid item xs={12} md={6}>
+              <Stack className={styles.textStack} spacing={4}>
+                <Typography variant="h4" component="h1">Hello <WavingHandIcon fontSize="medium"/> , <br/>my name is <span>Dmytro</span></Typography>
+                <Typography className={styles.textStackPurpose} variant="body1" component="p">I build responsive websites where technologies meet creativity</Typography>
+                <Button className={styles.contactBtn}>Contact me</Button>
+              </Stack>
+            </Grid>
+            <Grid item xs={12} sm={10} md={6}>
+              <Box className={styles.imageStack}>
+                <Box className={styles.imageStackItemBottom}>  
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/square.png"
+                    alt="square"
+                    width={155}
+                    height={155}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemMiddle}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/image.png"
+                    alt="photo"
+                    width={470}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemTop}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/dots.png"
+                    alt="photo"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+              </Box>
+              <Box className={styles.statusWorking}>
+                <SquareIcon />
+                <Typography className={styles.title} variant="h5" component="div">Currently working on <span>Portfolio</span></Typography>
+              </Box>
+            </Grid>
+            <Grid item xs={12} display="flex" justifyContent="center" position="relative">
+              <Stack className={styles.quote}>
+                <fieldset>
+                  <legend align="left"><FormatQuoteIcon fontSize="large"/></legend>
+                  <Typography className={styles.text} variant="h5" componen="div">First learn computer science and all the theory. Next develop a programming style. Then forget all that and just hack.</Typography>
+                </fieldset>
+                <fieldset>
+                  <legend align="right"><FormatQuoteIcon fontSize="large"/></legend>
+                  <Typography className={styles.text} variant="h6" component="div">- George Carrette</Typography>
+                </fieldset>
+              </Stack>
+              <Box className={styles.squareEffects}></Box>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+      <Paper className={styles.projects} component="section">
+        <Container>
+          <Grid container rowGap={4} justifyContent="center">
+            <Grid item xs={12}>
+              <Stack className={styles.title} direction="row" spacing={1}>
+                <TagIcon fontSize="large"/>
+                <Typography variant="h4" component="h2">projects</Typography>
+                <Box className={styles.divider}></Box>
+                <Box className={styles.more}>
+                  <Link to="/projects" className={styles.link}>
+                    <Typography variant="body1" component="div">View All</Typography>
+                  </Link>
+                  <ArrowRightAltIcon fontSize="large"/>
+                </Box>
+              </Stack>
+            </Grid>
+            <Grid item container columnGap={3}>
+              {projects && projects.map(({ node }) => (
+                <Grid key={node.id} item>
+                  <CardProject data={node} />
+                </Grid>
+              ))}
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+      <Paper className={styles.skills} component="section">
+        <Container>
+          <Grid container rowGap={4} justifyContent="center">
+            <Grid item xs={12}>
+              <Stack className={styles.title} direction="row" spacing={1}>
+                <TagIcon fontSize="large"/>
+                <Typography variant="h4" component="h2">skills</Typography>
+                <Box className={styles.divider}></Box>
+              </Stack>
+            </Grid>
+            <Grid item md={5} margin="auto">
+              <Box className={styles.imageStack}>
+                <Box className={styles.imageStackItemTopLeft}>  
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/dots.png"
+                    alt="square"
+                    width={155}
+                    height={155}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemTopRight}>
+                  <Box className={styles.square}></Box>
+                </Box>
+                <Box className={styles.imageStackItemBottomLeft}>  
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/square.png"
+                    alt="square"
+                    width={113}
+                    height={113}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemMiddle}>
+                  <StaticImage
+                    className={styles.img}
+                    src="../images/dots.png"
+                    alt="photo"
+                    width={84}
+                    height={84}
+                  />
+                </Box>
+                <Box className={styles.imageStackItemBottomRight}>
+                  <Box className={styles.square}></Box>
+                </Box>
+              </Box>
+            </Grid>
+            <Grid className={styles.skillsStack} item container xs={11} md={7}>
+              <Grid className={styles.skillsStackFrontend} item>
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "front-end")).node}
+                />
+              </Grid>
+              <Grid className={styles.skillsStackBackend} item>
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "back-end")).node}
+                />
+              </Grid>
+              <Grid className={styles.skillsStackDatabases} item>
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "databases")).node}
+                />
+              </Grid>
+              <Grid className={styles.skillsStackFrameworks} item>
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "frameworks")).node}
+                />
+              </Grid>
+              <Grid className={styles.skillsStackTools} item>
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "tools")).node}
+                />
+              </Grid>
+              <Grid className={styles.skillsStackLanguage} item>
+                <CardSkill
+                  data={allContentfulSkill.edges.find(({ node }) => (node.title === "language")).node}
+                />
+              </Grid>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+      <Paper className={styles.aboutMe} component="section">
+        <Container>
+          <Grid container rowGap={4} justifyContent="center">
+            <Grid item xs={12}>
+              <Stack className={styles.title} direction="row" spacing={1}>
+                <TagIcon fontSize="large"/>
+                <Typography variant="h4" component="h2">about-me</Typography>
+                <Box className={styles.divider}></Box>
+              </Stack>
+            </Grid>
+            <Grid item container xs={12} alignItems="baseline">
+              <Grid item xs={11} sm={6} md={6}>
+                <Stack className={styles.aboutMeInfo} rowGap={4}>
+                  <Typography variant="body1" component="div">
+                    Hi, I am Full-stack Developer with knowledge that allow to quickly adapt to any React application and start bringing value within short period of time.<br/>
+                    My main motivation to work as a developer - to be a part of the team that creates new apps for improving life quality, making our daily life much easier.<br/>
+                    Highly proactive, flexible and a fast learner with strong analytical and problem solving skills.<br/>
+                  </Typography>
+                  <Button className={styles.aboutMeInfoBtn} endIcon={<ArrowRightAltIcon />} component={Link} to="/about-me">
+                    Read more
+                  </Button>
+                </Stack>
+              </Grid>
+              <Grid item xs={11} sm={5} md={5}>
+                <Box className={styles.imageStack}>
+                  <Box className={styles.imageStackItemDots1}>
+                    <StaticImage
+                      className={styles.img}
+                      src="../images/dots.png"
+                      alt="square"
+                      width={84}
+                      height={84}
+                    />
+                  </Box>
+                  <Box className={styles.imageStackItemDots2}>
+                    <StaticImage
+                      className={styles.img}
+                      src="../images/dots.png"
+                      alt="square"
+                      width={104}
+                      height={56}
+                    />
+                  </Box>
+                  <Box className={styles.imageStackItemDots3}>
+                    <StaticImage
+                      className={styles.img}
+                      src="../images/dots.png"
+                      alt="square"
+                      width={103}
+                      height={103}
+                    />
+                  </Box>
+                  <Box className={styles.imageStackItemImage}>
+                    <StaticImage
+                      className={styles.img}
+                      src="../images/image-2.png"
+                      alt="square"
+                      width={330}
+                      height={507}
+                    />
+                  </Box>
+                </Box>
+                <Box className={styles.imageStackDivider}></Box>
+              </Grid>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+      <Paper className={styles.contacts} component="section">
+        <Container>
+          <Grid container rowGap={4} justifyContent="center">
+            <Grid item xs={12}>
+              <Stack className={styles.title} direction="row" spacing={1}>
+                <TagIcon fontSize="large"/>
+                <Typography variant="h4" component="h2">contacts</Typography>
+                <Box className={styles.divider}></Box>
+              </Stack>
+            </Grid>
+            <Grid item xs={11} sm={6} md={6}>
+              <Typography variant="body1" component="div">
+                If you have other request or question, don’t hesitate to contact me
+              </Typography>
+            </Grid>
+            <Grid item xs={11} sm={6} md={6}>
+              <Stack className={styles.contactsStack}>
+                <Typography className={styles.contactsStackTitle} variant="h6" component="h4">Message me here</Typography>
+                <Box className={styles.contactsStackItem}>
+                  <EmailIcon/>
+                  <LinkMui href="#" underline="hover">dima.komlyk@gmail.com</LinkMui>
+                </Box>
+                <Box className={styles.contactsStackItem}>
+                  <TelegramIcon/>
+                  <LinkMui href="https://t.me/dmytro_komlyk" underline="hover">t.me/dmytro_komlyk</LinkMui>
+                </Box>
+                <Box className={styles.contactsStackItem}>
+                  <LinkedInIcon/>
+                  <LinkMui href="https://www.linkedin.com/in/dmytro-komlyk/" underline="hover">linkedin</LinkMui>
+                </Box>
+              </Stack>
+            </Grid>
+          </Grid>
+        </Container>
+      </Paper>
+    </Layout>
   )
 }
 
 export default IndexPage
 
-export const Head = () => <title>Home Page</title>
+export const query = graphql`
+  query {
+    allContentfulProject {
+      edges {
+        node {
+          id
+          title
+          technologies
+          description
+          isCommercial
+          isProgress
+          isSmall
+          demoLink
+          githubLink
+          picture {
+            title
+            gatsbyImageData
+          }
+        }
+      }
+    }
+    allContentfulSkill {
+      edges {
+        node {
+          id
+          title
+          stackList
+        }
+      }
+    }
+  }
+`
+
+export const Head = () => <title>Home Page by Dmytro Komlyk</title>
