@@ -68,8 +68,8 @@ const Header = (props) => {
       </List>
       <Divider color="grey" />
       <Stack className={styles.communication} direction="row" justifyContent="center" spacing={1} p={1}>
-        {communicationItems.map(({ href, Icon }) => (
-          <MuiLink href={href}>
+        {communicationItems.map(({ href, Icon }, id) => (
+          <MuiLink key={id} href={href}>
             <Icon />
           </MuiLink>
         ))}
@@ -83,8 +83,8 @@ const Header = (props) => {
         <Box className={styles.communication}>
           <Box className={styles.communicationDivider}></Box>
           <Stack className={styles.communicationIcons}>
-            {communicationItems.map(({ href, Icon }) => (
-              <MuiLink href={href}>
+            {communicationItems.map(({ href, Icon }, id) => (
+              <MuiLink key={id} href={href}>
                 <Icon />
               </MuiLink>
             ))}
@@ -112,8 +112,8 @@ const Header = (props) => {
             <Box className={styles.menu}>
               {navItems.map(({ path, name }) => (
                 <Button
-                  className={styles.menuItem}
                   key={name}
+                  className={styles.menuItem}
                   to={path}
                   component={Link}
                 >
