@@ -4,7 +4,6 @@ import {
   Divider,
   Card,
   CardContent,
-//   CardMedia,
   CardActionArea,
   Typography
 } from '@mui/material';
@@ -12,7 +11,7 @@ import {
 import * as styles from "./card-skill.module.scss";
 
 const CardSkill = ({ data }) => {
-  const { title, skills } = data;
+  const { title, stackList } = data;
   return (
     <Card className={styles.cardSkill}>
       <CardActionArea>
@@ -20,8 +19,8 @@ const CardSkill = ({ data }) => {
           <Typography className={styles.cardSkillTitle} gutterBottom variant="h5" component="h3">{ title }</Typography>
           <Divider />
           <Stack className={styles.cardSkillStack} direction="row" spacing={1}>
-            { skills.map((skill) => (
-              <Typography gutterBottom variant="body1" component="div">{ skill }</Typography>
+            { stackList.split(" ").map((skill, id) => (
+              <Typography key={id} gutterBottom variant="body1" component="div">{ skill }</Typography>
             )) }
           </Stack>
         </CardContent>

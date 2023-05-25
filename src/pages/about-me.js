@@ -146,3 +146,18 @@ const AboutMePage = () => (
 );
 
 export default AboutMePage
+
+export const query = graphql`
+  query {
+    allContentfulSkill {
+      edges {
+        node {
+          id
+          title
+          stackList
+        }
+      }
+    }
+  }
+`
+export const Head = () => <title>About-me Page by Dmytro Komlyk</title>

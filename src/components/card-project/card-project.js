@@ -1,6 +1,5 @@
-import * as React from "react";
-import { StaticImage } from "gatsby-plugin-image"
-// import { GatsbyImage } from "gatsby-plugin-image"
+import * as React from "react"
+import { StaticImage, GatsbyImage } from "gatsby-plugin-image"
 import {
   Stack,
   Card,
@@ -13,29 +12,27 @@ import {
 
 import * as styles from "./card-project.module.scss";
 
-const CardProject = () => {
+const CardProject = ({ data }) => {
+  const { title, technologies, description, picture } = data;
+  
   return (
     <Card className={styles.cardProject}>
-      <CardMedia classNme={styles.cardProjectMedia}>
-        <StaticImage
-          className={styles.img}
-          src="../../images/kahoot.png"
-          alt="photo"
-          width={470}
-          height="auto"
-        />
+      <CardMedia className={styles.cardProjectMedia}>
+        <GatsbyImage image={picture.gatsbyImageData} alt={picture.title} />
       </CardMedia>
       <CardContent className={styles.cardProjectContent}>
         <Stack className={styles.cardProjectContentStackTech} direction="row" spacing={1}>
-          <Typography variant="body1" component="div">CSS</Typography>
-          <Typography variant="body1" component="div">Express</Typography>
-          <Typography variant="body1" component="div">Node.js</Typography>
+          {technologies.split(" ").map((technologie, id) => (
+            <Typography key={id} variant="body1" component="div">
+            { technologie }
+          </Typography>
+          ))}
         </Stack>
         <Typography className={styles.cardProjectContentTitle} gutterBottom variant="h5" component="h3">
-          Kahoot Answers Viewer
+          { title }
         </Typography>
         <Typography className={styles.cardProjectContentDescription} variant="body1" component="div">
-          Get answers to your kahoot quiz
+          { description }
         </Typography>
       </CardContent>
       <CardActions className={styles.cardProjectActions}>

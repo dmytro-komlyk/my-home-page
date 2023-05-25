@@ -1,6 +1,10 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`,
+});
+
 module.exports = {
   siteMetadata: {
     title: `My Home Page`,
@@ -9,7 +13,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-sass",
     "gatsby-plugin-smoothscroll",
-    "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
     {
       resolve: 'gatsby-plugin-manifest',
@@ -19,6 +22,7 @@ module.exports = {
     },
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
+    "gatsby-plugin-image",
     {
       resolve: 'gatsby-source-filesystem',
       options: {
@@ -26,6 +30,14 @@ module.exports = {
         "path": "./src/images/"
       },
       __key: "images"
+    },
+    "gatsby-transformer-remark",
+    {
+      resolve: `gatsby-source-contentful`,
+      options: {
+        spaceId: process.env.CONTENTFUL_SPACE_ID,
+        accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
+      },
     }
   ]
 };
