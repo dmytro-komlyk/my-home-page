@@ -6,6 +6,7 @@ import {
   Divider,
   Grid,
   Stack,
+  Link as MuiLink,
   Typography
 } from "@mui/material"
 import GitHubIcon from "@mui/icons-material/GitHub";
@@ -15,6 +16,13 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import CopyrightIcon from "@mui/icons-material/Copyright";
 
 import * as styles from "./footer.module.scss"
+
+const mediaItems = [
+  { Icon: GitHubIcon, href: "https://github.com/dmytro-komlyk" },
+  { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/dmytro-komlyk/" },
+  { Icon: FacebookIcon, href: "https://www.facebook.com/dkomlyk" },
+  { Icon: InstagramIcon, href: "https://www.instagram.com/dmitriy_komlyk/" }
+]
 
 const Footer = () => (
   <Box className={styles.footer} component="footer">
@@ -31,10 +39,11 @@ const Footer = () => (
           <Box className={styles.footerMedia} component="div">
             <Typography className={styles.footerMediaTitle} variant="h5" component="div">Media</Typography>
             <Stack className={styles.footerMediaStack}>
-              <GitHubIcon fontSize="medium"/>
-              <FacebookIcon fontSize="medium"/>
-              <InstagramIcon fontSize="medium"/>
-              <LinkedInIcon fontSize="medium" />
+              {mediaItems.map(({ href, Icon }, id) => (
+                <MuiLink key={id} href={href}>
+                  <Icon fontSize="medium" />
+                </MuiLink>
+              ))}
             </Stack>
           </Box>
         </Grid>

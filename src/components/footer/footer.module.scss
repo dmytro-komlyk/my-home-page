@@ -22,9 +22,12 @@
     &-stack {
       flex-direction: row;
       gap: 0.5rem;
+      > * {
+        color: var(--color-text);
 
-      & svg:hover {
-        fill: var(--color-primary);
+        & :hover {
+          fill: var(--color-primary);
+        }
       }
     }
   }
@@ -43,5 +46,5 @@
 
 .container-content {
   padding: 2rem 0;
-  gap: 3rem;
+  gap: 1rem;
 }
