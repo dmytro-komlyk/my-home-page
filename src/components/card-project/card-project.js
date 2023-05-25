@@ -7,7 +7,8 @@ import {
   CardContent,
   CardMedia,
   Button,
-  Typography
+  Typography,
+  Link as MuiLink
  } from "@mui/material";
 
 import * as styles from "./card-project.module.scss";
@@ -25,11 +26,11 @@ const CardProject = ({ data }) => {
   return (
     <Card className={styles.cardProject}>
       <CardMedia className={styles.cardProjectMedia}>
-        <GatsbyImage image={picture.gatsbyImageData} alt={picture.title} />
+        <GatsbyImage image={picture?.gatsbyImageData} alt={picture?.title} />
       </CardMedia>
       <CardContent className={styles.cardProjectContent}>
         <Stack className={styles.cardProjectContentStackTech} direction="row" spacing={1}>
-          {technologies.split(" ").map((technologie, id) => (
+          {technologies?.split(" ").map((technologie, id) => (
             <Typography key={id} variant="body1" component="div">
             { technologie }
           </Typography>
@@ -43,8 +44,22 @@ const CardProject = ({ data }) => {
         </Typography>
       </CardContent>
       <CardActions className={styles.cardProjectActions}>
-        <Button className={styles.cardProjectActionsBtn} as="a" href={githubLink} size="small">GITHUB</Button>
-        <Button className={styles.cardProjectActionsBtn} as="a" href={demoLink} size="small">LIVE</Button>
+        <Button
+          className={styles.cardProjectActionsBtn}
+          component={MuiLink}
+          href={githubLink}
+          size="small"
+        >
+          GITHUB
+        </Button>
+        <Button
+          className={styles.cardProjectActionsBtn}
+          component={MuiLink}
+          href={demoLink}
+          size="small"
+        >
+          LIVE
+        </Button>
       </CardActions>
     </Card>
   );
