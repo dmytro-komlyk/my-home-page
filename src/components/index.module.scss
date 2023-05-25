@@ -17,9 +17,20 @@
   box-shadow: none;
 
   .text-stack {
+    color: var(--color-white);
+
     @include for-tablet-portrait-up {
       margin-top: 5rem;
       padding-left: 2rem;
+    }
+
+    svg,
+    span {
+      color: var(--color-primary)
+    }
+
+    &-purpose {
+      color: var(--color-text);
     }
 
     .contact-btn {
@@ -95,6 +106,10 @@
 
     > * {
       width: fit-content;
+
+      svg {
+        color: var(--color-primary)
+      }
 
       .text {
         color: var(--color-white);
