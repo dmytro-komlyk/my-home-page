@@ -32,7 +32,7 @@ const navItems = [
 const communicationItems = [
   { Icon: GitHubIcon, href: "https://github.com/dmytro-komlyk" },
   { Icon: LinkedInIcon, href: "https://www.linkedin.com/in/dmytro-komlyk/" },
-  { Icon: TelegramIcon, href: "" }
+  { Icon: TelegramIcon, href: "https://t.me/dmytro_komlyk" }
 ]
 
 const Header = (props) => {
