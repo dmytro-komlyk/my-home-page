@@ -13,6 +13,8 @@
 
   &-media {
     border: none;
+    width: 100%;
+    height: auto;
   }
 
   &-content {
@@ -21,7 +23,10 @@
     gap: 0.5rem;
     background-color: var(--color-background);
 
-    // &-stack-tech {}
+    &-stack-tech {
+      gap: 0.5rem;
+      flex-wrap: wrap;
+    }
 
     &-title {
       color: var(--color-white)
