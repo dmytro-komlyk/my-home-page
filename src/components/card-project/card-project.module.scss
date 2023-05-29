@@ -1,7 +1,11 @@
 @import "../../styles/styles.scss";
 
 .card-project {
+  display: flex;
+  flex-direction: column;
   max-width: 330px;
+  max-height: 400px;
+  height: 100%;
   border-radius: 0.5rem;
   border: 2px solid var(--color-text);
   color: var(--color-text);
@@ -20,6 +24,7 @@
   &-content {
     display: flex;
     flex-direction: column;
+    flex: 1 1;
     gap: 0.5rem;
     background-color: var(--color-background);
 
