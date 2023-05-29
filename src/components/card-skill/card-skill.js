@@ -18,7 +18,7 @@ const CardSkill = ({ data }) => {
         <CardContent>
           <Typography className={styles.cardSkillTitle} gutterBottom variant="h5" component="h3">{ data?.title }</Typography>
           <Divider />
-          <Stack className={styles.cardSkillStack} direction="row" spacing={1}>
+          <Stack className={styles.cardSkillStack} direction="row">
             { data?.stackList?.split(" ").map((skill, id) => (
               <Typography key={id} gutterBottom variant="body1" component="div">{ skill }</Typography>
             )) }
