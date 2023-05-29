@@ -11,7 +11,6 @@ module.exports = {
     siteUrl: `https://www.yourdomain.tld`
   },
   plugins: [
-    "gatsby-plugin-material-ui",
     "gatsby-plugin-sass",
     "gatsby-plugin-smoothscroll",
     "gatsby-plugin-sitemap",
