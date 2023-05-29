@@ -29,7 +29,7 @@ const CardProject = ({ data }) => {
         <GatsbyImage image={picture?.gatsbyImageData} alt={picture?.title} />
       </CardMedia>
       <CardContent className={styles.cardProjectContent}>
-        <Stack className={styles.cardProjectContentStackTech} direction="row" spacing={1}>
+        <Stack className={styles.cardProjectContentStackTech} direction="row">
           {technologies?.split(" ").map((technologie, id) => (
             <Typography key={id} variant="body1" component="div">
             { technologie }
