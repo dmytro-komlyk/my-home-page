@@ -108,7 +108,7 @@ const IndexPage = ({ data }) => {
                 </Box>
               </Stack>
             </Grid>
-            <Grid item container columnGap={3}>
+            <Grid item container gap={3}>
               {projects && projects.map(({ node }) => (
                 <Grid key={node.id} item>
                   <CardProject data={node} />
