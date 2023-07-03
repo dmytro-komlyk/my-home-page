@@ -109,7 +109,7 @@ const IndexPage = ({ data }) => {
               </Stack>
             </Grid>
             <Grid item container gap={3}>
-              {projects && projects.map(({ node }) => (
+              {projects && projects.filter(project => !project.node.isSmall).map(({ node }) => (
                 <Grid key={node.id} item>
                   <CardProject data={node} />
                 </Grid>
