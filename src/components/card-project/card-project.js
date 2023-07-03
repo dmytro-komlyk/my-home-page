@@ -22,12 +22,15 @@ const CardProject = ({ data }) => {
     githubLink,
     demoLink
   } = data;
-  
+
   return (
     <Card className={styles.cardProject}>
-      <CardMedia className={styles.cardProjectMedia}>
-        <GatsbyImage image={picture?.gatsbyImageData} alt={picture?.title} />
-      </CardMedia>
+      { picture
+        &&
+        <CardMedia className={styles.cardProjectMedia}>
+          <GatsbyImage image={picture?.gatsbyImageData} alt={picture?.title} />
+        </CardMedia>
+      }
       <CardContent className={styles.cardProjectContent}>
         <Stack className={styles.cardProjectContentStackTech} direction="row">
           {technologies?.split(" ").map((technologie, id) => (
@@ -52,14 +55,17 @@ const CardProject = ({ data }) => {
         >
           GITHUB
         </Button>
-        <Button
-          className={styles.cardProjectActionsBtn}
-          component={MuiLink}
-          href={demoLink}
-          size="small"
-        >
-          LIVE
-        </Button>
+        { demoLink
+          &&
+          <Button
+            className={styles.cardProjectActionsBtn}
+            component={MuiLink}
+            href={demoLink}
+            size="small"
+          >
+            LIVE
+          </Button>
+        }
       </CardActions>
     </Card>
   );

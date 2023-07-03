@@ -19,7 +19,7 @@ import CardProject from "../components/card-project/card-project"
 import * as styles from "../components/projects.module.scss"
 
 const ProjectsPage = ({ data }) => {
-  const projects = data.allContentfulProject.edges;
+  const allProjects = data.allContentfulProject.edges;
 
   return (
     <Layout>
@@ -52,7 +52,7 @@ const ProjectsPage = ({ data }) => {
                 </Stack>
               </Grid>
               <Grid className={styles.completeAppsStack} item container gap={3}>
-                { projects && projects.map(({ node }) => (
+                { allProjects && allProjects.filter(project => !project.node.isSmall).map(({ node }) => (
                   <Grid key={node.id} item>
                     <CardProject data={node} />
                   </Grid>
@@ -85,8 +85,12 @@ const ProjectsPage = ({ data }) => {
                   <Typography variant="h4" component="h3">small-projects</Typography>
                 </Stack>
               </Grid>
-              <Grid className={styles.smallProjectsStack} item container>
-                <Grid item></Grid>
+              <Grid className={styles.smallProjectsStack} item container gap={3}>
+                { allProjects && allProjects.filter(project => project.node.isSmall).map(({ node }) => (
+                  <Grid key={node.id} item>
+                    <CardProject data={node} />
+                  </Grid>
+                )) }
               </Grid>
             </Grid>
           </Grid>
@@ -114,6 +118,8 @@ export const query = graphql`
             title
             gatsbyImageData
           }
+          demoLink
+          githubLink
         }
       }
     }
