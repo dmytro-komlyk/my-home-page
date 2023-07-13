@@ -12,7 +12,6 @@ import LinkedInIcon from "@mui/icons-material/LinkedIn";
 import {
   Toolbar,
   Box,
-  Paper,
   Container,
   Grid,
   Stack,
@@ -32,7 +31,7 @@ const IndexPage = ({ data }) => {
   return (
     <Layout>
       <Toolbar/>
-      <Paper className={styles.intro} component="section">
+      <Box className={styles.intro} component="section">
         <Container>
           <Grid container rowGap={4} justifyContent="center">
             <Grid item xs={12} md={6}>
@@ -46,7 +45,6 @@ const IndexPage = ({ data }) => {
               <Box className={styles.imageStack}>
                 <Box className={styles.imageStackItemBottom}>  
                   <StaticImage
-                    className={styles.img}
                     src="../images/square.png"
                     alt="square"
                     width={155}
@@ -55,7 +53,6 @@ const IndexPage = ({ data }) => {
                 </Box>
                 <Box className={styles.imageStackItemMiddle}>
                   <StaticImage
-                    className={styles.img}
                     src="../images/image.png"
                     alt="photo"
                     width={470}
@@ -63,7 +60,6 @@ const IndexPage = ({ data }) => {
                 </Box>
                 <Box className={styles.imageStackItemTop}>
                   <StaticImage
-                    className={styles.img}
                     src="../images/dots.png"
                     alt="photo"
                     width={84}
@@ -91,8 +87,8 @@ const IndexPage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
-      <Paper className={styles.projects} component="section">
+      </Box>
+      <Box className={styles.projects} component="section">
         <Container>
           <Grid container rowGap={4} justifyContent="center">
             <Grid item xs={12}>
@@ -109,7 +105,7 @@ const IndexPage = ({ data }) => {
               </Stack>
             </Grid>
             <Grid item container gap={3}>
-              {projects && projects.map(({ node }) => (
+              {projects && projects.filter(project => !project.node.isSmall).map(({ node }) => (
                 <Grid key={node.id} item>
                   <CardProject data={node} />
                 </Grid>
@@ -117,8 +113,8 @@ const IndexPage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
-      <Paper className={styles.skills} component="section">
+      </Box>
+      <Box className={styles.skills} component="section">
         <Container>
           <Grid container rowGap={4} justifyContent="center">
             <Grid item xs={12}>
@@ -132,7 +128,6 @@ const IndexPage = ({ data }) => {
               <Box className={styles.imageStack}>
                 <Box className={styles.imageStackItemTopLeft}>  
                   <StaticImage
-                    className={styles.img}
                     src="../images/dots.png"
                     alt="square"
                     width={155}
@@ -144,7 +139,6 @@ const IndexPage = ({ data }) => {
                 </Box>
                 <Box className={styles.imageStackItemBottomLeft}>  
                   <StaticImage
-                    className={styles.img}
                     src="../images/square.png"
                     alt="square"
                     width={113}
@@ -153,7 +147,6 @@ const IndexPage = ({ data }) => {
                 </Box>
                 <Box className={styles.imageStackItemMiddle}>
                   <StaticImage
-                    className={styles.img}
                     src="../images/dots.png"
                     alt="photo"
                     width={84}
@@ -199,8 +192,8 @@ const IndexPage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
-      <Paper className={styles.aboutMe} component="section">
+      </Box>
+      <Box className={styles.aboutMe} component="section">
         <Container>
           <Grid container rowGap={4} justifyContent="center">
             <Grid item xs={12}>
@@ -227,7 +220,6 @@ const IndexPage = ({ data }) => {
                 <Box className={styles.imageStack}>
                   <Box className={styles.imageStackItemDots1}>
                     <StaticImage
-                      className={styles.img}
                       src="../images/dots.png"
                       alt="square"
                       width={84}
@@ -236,7 +228,6 @@ const IndexPage = ({ data }) => {
                   </Box>
                   <Box className={styles.imageStackItemDots2}>
                     <StaticImage
-                      className={styles.img}
                       src="../images/dots.png"
                       alt="square"
                       width={104}
@@ -245,7 +236,6 @@ const IndexPage = ({ data }) => {
                   </Box>
                   <Box className={styles.imageStackItemDots3}>
                     <StaticImage
-                      className={styles.img}
                       src="../images/dots.png"
                       alt="square"
                       width={103}
@@ -254,7 +244,6 @@ const IndexPage = ({ data }) => {
                   </Box>
                   <Box className={styles.imageStackItemImage}>
                     <StaticImage
-                      className={styles.img}
                       src="../images/image-2.png"
                       alt="square"
                       width={330}
@@ -267,8 +256,8 @@ const IndexPage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
-      <Paper className={styles.contacts} component="section">
+      </Box>
+      <Box className={styles.contacts} component="section">
         <Container>
           <Grid container rowGap={4} justifyContent="center">
             <Grid item xs={12}>
@@ -302,7 +291,7 @@ const IndexPage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
+      </Box>
     </Layout>
   )
 }

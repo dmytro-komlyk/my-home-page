@@ -4,13 +4,10 @@ import { StaticImage } from "gatsby-plugin-image"
 import {
   Toolbar,
   Box,
-  Paper,
   Container,
   Grid,
   Stack,
-  Button,
-  Typography,
-  Link as LinkMui
+  Typography
 } from "@mui/material";
 import TagIcon from '@mui/icons-material/Tag';
 import Layout from "../components/layout/layout"
@@ -19,12 +16,12 @@ import CardProject from "../components/card-project/card-project"
 import * as styles from "../components/projects.module.scss"
 
 const ProjectsPage = ({ data }) => {
-  const projects = data.allContentfulProject.edges;
+  const allProjects = data.allContentfulProject.edges;
 
   return (
     <Layout>
       <Toolbar/>
-      <Paper className={styles.projectsPage} component="div">
+      <Box className={styles.projectsPage} component="div">
         <Container>
           <Grid container>
             <Grid item xs={12}>
@@ -52,7 +49,7 @@ const ProjectsPage = ({ data }) => {
                 </Stack>
               </Grid>
               <Grid className={styles.completeAppsStack} item container gap={3}>
-                { projects && projects.map(({ node }) => (
+                { allProjects && allProjects.filter(project => !project.node.isSmall).map(({ node }) => (
                   <Grid key={node.id} item>
                     <CardProject data={node} />
                   </Grid>
@@ -85,13 +82,17 @@ const ProjectsPage = ({ data }) => {
                   <Typography variant="h4" component="h3">small-projects</Typography>
                 </Stack>
               </Grid>
-              <Grid className={styles.smallProjectsStack} item container>
-                <Grid item></Grid>
+              <Grid className={styles.smallProjectsStack} item container gap={3}>
+                { allProjects && allProjects.filter(project => project.node.isSmall).map(({ node }) => (
+                  <Grid key={node.id} item>
+                    <CardProject data={node} />
+                  </Grid>
+                )) }
               </Grid>
             </Grid>
           </Grid>
         </Container>
-      </Paper>
+      </Box>
     </Layout>
   );
 }
@@ -114,6 +115,8 @@ export const query = graphql`
             title
             gatsbyImageData
           }
+          demoLink
+          githubLink
         }
       }
     }

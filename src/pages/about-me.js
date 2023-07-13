@@ -4,7 +4,6 @@ import { StaticImage } from "gatsby-plugin-image"
 import {
   Toolbar,
   Box,
-  Paper,
   Container,
   Grid,
   Stack,
@@ -22,7 +21,7 @@ const AboutMePage = ({ data }) => {
   return (
     <Layout>
       <Toolbar/>
-      <Paper className={styles.aboutMePage} component="div">
+      <Box className={styles.aboutMePage} component="div">
         <Container>
           <Grid container>
             <Grid item xs={12}>
@@ -143,7 +142,7 @@ const AboutMePage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
+      </Box>
     </Layout>
   );
 }

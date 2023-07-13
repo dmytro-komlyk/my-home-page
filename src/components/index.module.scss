@@ -3,9 +3,8 @@
 /* Intro */
 .intro {
   width: 100%;
-  color: var(--color-text);
   margin: {
-    top: -65px;
+    top: -4rem;
     bottom: 5rem;
   };
   padding: {
@@ -13,8 +12,6 @@
     right: 1rem;
     left: 1rem;
   }
-  background: transparent;
-  box-shadow: none;
 
   .text-stack {
     color: var(--color-white);
@@ -139,8 +136,6 @@
 
 /* Projects */
 .projects {
-  background: var(--color-background);
-  box-shadow: none;
   margin: 5rem 0;
 
   .title {
@@ -177,8 +172,6 @@
 
 /* Skills */
 .skills {
-  background: var(--color-background);
-  box-shadow: none;
   margin: 5rem 0;
 
   .title {
@@ -290,9 +283,6 @@
 
 /* About Me */
 .about-me {
-  color: var(--color-text);
-  background: var(--color-background);
-  box-shadow: none;
   margin: 5rem 0;
 
   .title {
@@ -357,8 +347,8 @@
 
   &-info-btn {
     width: fit-content;
-    color: var(--color-white);
-    border: 2px solid var(--color-primary);
+    color: var(--color-white) !important;
+    border: 2px solid var(--color-primary) !important;
     
     &:hover {
       background-color: var(--color-primary);
@@ -368,9 +358,6 @@
 
 /* Contacts */
 .contacts {
-  color: var(--color-text);
-  background: var(--color-background);
-  box-shadow: none;
   margin: 5rem 0;
 
   .title {

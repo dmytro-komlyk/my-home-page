@@ -1,5 +1,4 @@
 import * as React from "react"
-import { Link } from "gatsby"
 import {
   Box,
   Container,
@@ -38,7 +37,7 @@ const Footer = () => (
         <Grid item marginLeft="auto">
           <Box className={styles.footerMedia} component="div">
             <Typography className={styles.footerMediaTitle} variant="h5" component="div">Media</Typography>
-            <Stack className={styles.footerMediaStack}>
+            <Stack className={styles.footerMediaStack} direction="row" spacing={1}>
               {mediaItems.map(({ href, Icon }, id) => (
                 <MuiLink key={id} href={href}>
                   <Icon fontSize="medium" />
