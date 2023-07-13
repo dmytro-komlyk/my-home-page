@@ -1,6 +1,7 @@
-import * as React from "react"
-import { Link, graphql } from "gatsby"
-import { StaticImage } from "gatsby-plugin-image"
+import * as React from "react";
+import { useState } from "react";
+import { Link, graphql } from "gatsby";
+import { StaticImage } from "gatsby-plugin-image";
 import WavingHandIcon from '@mui/icons-material/WavingHand';
 import SquareIcon from "@mui/icons-material/Square";
 import TagIcon from "@mui/icons-material/Tag";
@@ -22,11 +23,18 @@ import {
 import Layout from "../components/layout/layout"
 import CardProject from "../components/card-project/card-project"
 import CardSkill from "../components/card-skill/card-skill"
+import Modal from "../components/modal/modal"
+import ContactForm from "../components/form/contact-form";
 import * as styles from "../components/index.module.scss"
+
 
 const IndexPage = ({ data }) => {
   const { allContentfulProject, allContentfulSkill } = data;
   const projects = allContentfulProject.edges;
+
+  const [showContactForm, setShowContactForm] = useState(false);
+  const handleOpenContactForm = () => setShowContactForm(true);
+  const handleCloseContactForm = () => setShowContactForm(false);
 
   return (
     <Layout>
@@ -38,7 +46,13 @@ const IndexPage = ({ data }) => {
               <Stack className={styles.textStack} spacing={4}>
                 <Typography variant="h4" component="h1">Hello <WavingHandIcon fontSize="medium"/> , <br/>my name is <span>Dmytro</span></Typography>
                 <Typography className={styles.textStackPurpose} variant="body1" component="p">I build responsive websites where technologies meet creativity</Typography>
-                <Button className={styles.contactBtn}>Contact me</Button>
+                <Button className={styles.contactBtn} onClick={handleOpenContactForm}>Contact me</Button>
+                <Modal
+                  isOpen={showContactForm}
+                  handleClose={handleCloseContactForm}
+                >
+                  <ContactForm />
+                </Modal>
               </Stack>
             </Grid>
             <Grid item xs={12} sm={10} md={6}>
