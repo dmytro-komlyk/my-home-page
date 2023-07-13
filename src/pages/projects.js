@@ -4,13 +4,10 @@ import { StaticImage } from "gatsby-plugin-image"
 import {
   Toolbar,
   Box,
-  Paper,
   Container,
   Grid,
   Stack,
-  Button,
-  Typography,
-  Link as LinkMui
+  Typography
 } from "@mui/material";
 import TagIcon from '@mui/icons-material/Tag';
 import Layout from "../components/layout/layout"
@@ -24,7 +21,7 @@ const ProjectsPage = ({ data }) => {
   return (
     <Layout>
       <Toolbar/>
-      <Paper className={styles.projectsPage} component="div">
+      <Box className={styles.projectsPage} component="div">
         <Container>
           <Grid container>
             <Grid item xs={12}>
@@ -95,7 +92,7 @@ const ProjectsPage = ({ data }) => {
             </Grid>
           </Grid>
         </Container>
-      </Paper>
+      </Box>
     </Layout>
   );
 }

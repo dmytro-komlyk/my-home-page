@@ -1,9 +1,9 @@
 import * as React from "react"
+import { useState } from "react";
 import { Link } from "gatsby"
 import {
   Box,
   Container,
-  AppBar,
   Stack,
   Divider,
   Drawer,
@@ -36,7 +36,7 @@ const communicationItems = [
 ]
 
 const Header = (props) => {
-  const [mobileOpen, setMobileOpen] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
 
   const handleDrawerToggle = () => {
     setMobileOpen((prevState) => !prevState);
@@ -79,7 +79,7 @@ const Header = (props) => {
 
   return (
     <Box className={styles.header} component="header">
-      <AppBar className={styles.nav} component="nav">
+      <Box className={styles.nav} component="nav">
         <Box className={styles.communication}>
           <Box className={styles.communicationDivider}></Box>
           <Stack className={styles.communicationIcons}>
@@ -126,7 +126,7 @@ const Header = (props) => {
             </Box>
           </Toolbar>
         </Container>
-      </AppBar>
+      </Box>
       <Box component="nav">
         <Drawer
           anchor={"top"}

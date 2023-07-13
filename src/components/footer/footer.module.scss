@@ -1,4 +1,5 @@
 .footer {
+  display: flex;
   position: relative;
   z-index: 1;
   background-color: var(--color-background);
@@ -20,10 +21,8 @@
     }
 
     &-stack {
-      flex-direction: row;
-      gap: 0.5rem;
       > * {
-        color: var(--color-text);
+        color: var(--color-text) !important;
 
         & :hover {
           fill: var(--color-primary);

@@ -2,9 +2,8 @@
 
 .card-skill {
   max-width: 200px;
-  color: var(--color-text);
   border: 2px solid var(--color-text);
-  background-color: var(--color-background);
+  background-color: var(--color-background) !important;
 
   &-title {
     color: var(--color-white);
@@ -13,5 +12,6 @@
   &-stack {
     gap: 0 0.5rem;
     flex-wrap: wrap;
+    color: var(--color-text);
   }
 }

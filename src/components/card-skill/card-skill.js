@@ -20,7 +20,7 @@ const CardSkill = ({ data }) => {
           <Divider />
           <Stack className={styles.cardSkillStack} direction="row">
             { data?.stackList?.split(" ").map((skill, id) => (
-              <Typography key={id} gutterBottom variant="body1" component="div">{ skill }</Typography>
+              <Typography key={id} color="inherit" gutterBottom variant="body1" component="span">{ skill }</Typography>
             )) }
           </Stack>
         </CardContent>

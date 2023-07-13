@@ -34,7 +34,7 @@ const CardProject = ({ data }) => {
       <CardContent className={styles.cardProjectContent}>
         <Stack className={styles.cardProjectContentStackTech} direction="row">
           {technologies?.split(" ").map((technologie, id) => (
-            <Typography key={id} variant="body1" component="div">
+            <Typography key={id} variant="body1" component="span">
             { technologie }
           </Typography>
           ))}
@@ -42,7 +42,7 @@ const CardProject = ({ data }) => {
         <Typography className={styles.cardProjectContentTitle} gutterBottom variant="h5" component="h3">
           { title }
         </Typography>
-        <Typography className={styles.cardProjectContentDescription} variant="body1" component="div">
+        <Typography className={styles.cardProjectContentDescription} variant="body1" component="span">
           { description }
         </Typography>
       </CardContent>
