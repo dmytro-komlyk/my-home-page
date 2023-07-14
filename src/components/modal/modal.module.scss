@@ -1,0 +1,12 @@
+@import "../../styles/styles.scss";
+
+.modal {
+  &-container {
+    position: absolute;
+    top: 40%;
+    left: 40%;
+    border: 2px solid var(--color-text);
+    border-radius: 1rem;
+    background-color: var(--color-text);
+  }
+}
