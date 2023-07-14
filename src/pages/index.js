@@ -1,5 +1,4 @@
 import * as React from "react";
-import { useState } from "react";
 import { Link, graphql } from "gatsby";
 import { StaticImage } from "gatsby-plugin-image";
 import WavingHandIcon from '@mui/icons-material/WavingHand';
@@ -32,7 +31,8 @@ const IndexPage = ({ data }) => {
   const { allContentfulProject, allContentfulSkill } = data;
   const projects = allContentfulProject.edges;
 
-  const [showContactForm, setShowContactForm] = useState(false);
+  const [showContactForm, setShowContactForm] = React.useState(false);
+
   const handleOpenContactForm = () => setShowContactForm(true);
   const handleCloseContactForm = () => setShowContactForm(false);
 
