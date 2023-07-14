@@ -8,7 +8,6 @@ import {
   CardMedia,
   Button,
   Typography,
-  Link as MuiLink
  } from "@mui/material";
 
 import * as styles from "./card-project.module.scss";
@@ -49,7 +48,6 @@ const CardProject = ({ data }) => {
       <CardActions className={styles.cardProjectActions}>
         <Button
           className={styles.cardProjectActionsBtn}
-          component={MuiLink}
           href={githubLink}
           size="small"
         >
@@ -59,7 +57,6 @@ const CardProject = ({ data }) => {
           &&
           <Button
             className={styles.cardProjectActionsBtn}
-            component={MuiLink}
             href={demoLink}
             size="small"
           >
