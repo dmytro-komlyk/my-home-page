@@ -30,7 +30,8 @@ import * as styles from "../components/index.module.scss"
 const IndexPage = ({ data }) => {
   const { allContentfulProject, allContentfulSkill } = data;
   const projects = allContentfulProject.edges;
-
+  const currentProject = allContentfulProject.edges.find(({ node }) => node.isProgress);
+  console.log(currentProject)
   const [showContactForm, setShowContactForm] = React.useState(false);
 
   const handleOpenContactForm = () => setShowContactForm(true);
@@ -82,8 +83,8 @@ const IndexPage = ({ data }) => {
                 </Box>
               </Box>
               <Box className={styles.statusWorking}>
-                <SquareIcon />
-                <Typography className={styles.title} variant="h5" component="div">Currently working on <span>Portfolio</span></Typography>
+                <SquareIcon className={styles.icon}/>
+                <Typography className={styles.title} variant="h5" component="div">Currently working on <Link href={currentProject.node.githubLink}>{currentProject.node.title}</Link></Typography>
               </Box>
             </Grid>
             <Grid item xs={12} display="flex" justifyContent="center" position="relative">
