@@ -20,18 +20,18 @@ import {
   Link as LinkMui
 } from "@mui/material";
 import Layout from "../components/layout/layout"
-import CardProject from "../components/card-project/card-project"
+// import CardProject from "../components/card-project/card-project"
 import CardSkill from "../components/card-skill/card-skill"
+import Slider from "../components/slider/slider";
 import Modal from "../components/modal/modal"
 import ContactForm from "../components/form/contact-form";
 import * as styles from "../components/index.module.scss"
-
 
 const IndexPage = ({ data }) => {
   const { allContentfulProject, allContentfulSkill } = data;
   const projects = allContentfulProject.edges;
   const currentProject = allContentfulProject.edges.find(({ node }) => node.isProgress);
-  console.log(currentProject)
+
   const [showContactForm, setShowContactForm] = React.useState(false);
 
   const handleOpenContactForm = () => setShowContactForm(true);
@@ -119,12 +119,8 @@ const IndexPage = ({ data }) => {
                 </Box>
               </Stack>
             </Grid>
-            <Grid item container gap={3}>
-              {projects && projects.filter(project => !project.node.isSmall).map(({ node }) => (
-                <Grid key={node.id} item>
-                  <CardProject data={node} />
-                </Grid>
-              ))}
+            <Grid item xs={12}>
+              {projects && <Slider items={projects.filter(project => !project.node.isSmall)} />}
             </Grid>
           </Grid>
         </Container>
