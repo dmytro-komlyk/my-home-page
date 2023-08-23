@@ -25,7 +25,6 @@ const CardProject = ({ data }) => {
   } = data;
 
   return (
-    <>
       <Card className={styles.cardProject}>
         { picture
           &&
@@ -67,13 +66,12 @@ const CardProject = ({ data }) => {
             </Button>
           }
         </CardActions>
-      </Card>
-      {isCommercial &&
+        {isCommercial &&
         <Box className={styles.ribbonWrapper}>
           <Box className={styles.ribbonWrapperGreen}>Commercial</Box>
         </Box>
       }
-    </>
+      </Card>
   );
 }
 
